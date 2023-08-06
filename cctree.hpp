@@ -34,8 +34,15 @@ int TreeNode::get_height()
         return 1;
     else if (this->left == NULL)
         return this->right->get_height() + 1;
-    else
+    else if (this->right == NULL)
         return this->left->get_height() + 1;
+    else
+    {
+        int right_height = this->right->get_height();
+        int left_height = this->left->get_height();
+        if (right_height >= left_height) return right_height + 1;
+        else return left_height + 1;
+    }
 }
 
 TreeNode *TreeNode::get_uncle()
